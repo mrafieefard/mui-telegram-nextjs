@@ -13,6 +13,7 @@ export default function LandingPage() {
         if (webapp) {
             expand()
             webapp.disableVerticalSwipes()
+            webapp.setHeaderColor("#000")
             setPage('home');
         }
     }, [webapp, setPage]);
