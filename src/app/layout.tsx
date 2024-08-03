@@ -1,6 +1,10 @@
+// app/layout.tsx
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { TelegramProvider } from "./context/telegram-provider";
+import { MuiProvider } from "./context/mui-provider";
+import { AppProvider } from "./context/AppContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +20,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="overflow-hidden">
+        <MuiProvider>
+          <TelegramProvider>
+            <AppProvider>
+              {children}
+            </AppProvider>
+          </TelegramProvider>
+        </MuiProvider>
+      </body>
     </html>
   );
 }
